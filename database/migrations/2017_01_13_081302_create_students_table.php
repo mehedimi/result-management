@@ -29,6 +29,7 @@ class CreateStudentsTable extends Migration
             $table->string('semester');
             $table->text('present_address')->nullable();
             $table->text('permanent_address')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
