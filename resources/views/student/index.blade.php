@@ -33,7 +33,7 @@
                     <td>{{$s->roll_number}}</td>
                     <td>{{$s->reg_number}}</td>
                     <td>{{$s->created_at->diffForHumans()}}</td>
-                    <td>Action</td>
+                    <td><a href="{{ route('student.edit', $s->id) }}">Edit</a></td>
                 </tr>
                 @endforeach
             </tbody>
