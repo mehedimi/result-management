@@ -19,6 +19,7 @@
         @else
         <li><a href="{{ route('home.page') }}">Home</a></li>
         <li><a href="{{ route('student.index') }}">Students</a></li>
+        <li><a href="{{ route('department.index') }}">Departments</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
