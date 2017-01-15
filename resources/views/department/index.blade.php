@@ -2,8 +2,9 @@
 @section('title', 'Departments')
 @section('content')
 <div class="container">
-    <div class="page-header">
-      <h1>All Departments</h1>
+    <div class="page-header clearfix">
+      <h1 style="display: inline-block">All Departments</h1>
+      <a href="{{ route('department.create') }}" class="btn pull-right btn-info">Add New</a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -18,9 +19,9 @@
             <tbody>
                 @foreach($departments as $d)
                 <tr>
-                    <td>{{$s->department_name}}</td>
-                    <td>{{$s->created_at->diffForHumans()}}</td>
-                    <td>{{$s->updated_at->diffForHumans()}}</td>
+                    <td>{{$d->department_name}}</td>
+                    <td>{{$d->created_at->diffForHumans()}}</td>
+                    <td>{{$d->updated_at->diffForHumans()}}</td>
                     <td><a href="">Edit</a></td>
                 </tr>
                 @endforeach

@@ -42,6 +42,13 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'DepartmentController@index',
 		'as' => 'department.index'
 	]);
+	Route::get('department/create', [
+		'uses' => 'DepartmentController@create',
+		'as' => 'department.create'
+	]);
+	Route::post('department/create', [
+		'uses' => 'DepartmentController@store',
+	]);
 
 });
 

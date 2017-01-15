@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Student;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StudentEditRequest extends FormRequest
+class DepartmentCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +21,10 @@ class StudentEditRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(Student $student)
+    public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'email',
-            'roll_number' => 'required|integer|unique:students,roll_number,' . $student->id,
-            'reg_number' => 'required|integer|unique:students,reg_number,' . $student->id,
+            'department_name' => 'required|max:255|unique:departments'
         ];
     }
 }
