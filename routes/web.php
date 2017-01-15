@@ -38,5 +38,10 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'StudentController@update',
 	]);
 
+	Route::get('departments', [
+		'uses' => 'DepartmentController@index',
+		'as' => 'department.index'
+	]);
+
 });
 
