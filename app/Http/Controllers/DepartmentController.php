@@ -23,8 +23,17 @@ class DepartmentController extends Controller
     	return back()->withInfo('Department Created Successfully');
     }
 
-    public function edit()
+    public function edit(Department $department)
     {
-    	
+    	return view('department.edit', compact('department'));
+    }
+
+    public function update(Department $department, Request $request)
+    {
+    	$this->validate($request, [
+    		'department_name' => 'required|max:255|unique:departments,department_name,' . $department->id
+    	]);
+    	$department->update($request->all());
+    	return back()->withInfo('Department Info Successfully Updated');
     }
 }

@@ -2,8 +2,9 @@
 @section('title', 'Students')
 @section('content')
 <div class="container">
-    <div class="page-header">
-      <h1>All Students</h1>
+    <div class="page-header clearfix">
+      <h1 style="display: inline-block">All Students</h1>
+      <a href="{{ route('student.create') }}" class="btn pull-right btn-info">Create New Student</a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered">

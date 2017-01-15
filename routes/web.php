@@ -30,6 +30,13 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'StudentController@index',
 		'as' => 'student.index'
 	]);
+	Route::get('student/create', [
+		'uses' => 'StudentController@create',
+		'as' => 'student.create'
+	]);
+	Route::post('student/create', [
+		'uses' => 'StudentController@store',
+	]);
 	Route::get('student/{student}/edit', [
 		'uses' => 'StudentController@edit',
 		'as' => 'student.edit'
@@ -49,6 +56,14 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('department/create', [
 		'uses' => 'DepartmentController@store',
 	]);
+	Route::get('department/{department}/edit', [
+		'uses' => 'DepartmentController@edit',
+		'as' => 'department.edit'
+	]);
+	Route::put('department/{department}/edit', [
+		'uses' => 'DepartmentController@update',
+	]);
+
 
 });
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
+use App\Http\Requests\StudentCreateRequest;
 use App\Http\Requests\StudentEditRequest;
 use App\Student;
 use Illuminate\Http\Request;
@@ -12,6 +14,16 @@ class StudentController extends Controller
     {	
     	$students = Student::orderBy('name', 'asc')->paginate(10);
     	return view('student.index', compact('students'));
+    }
+    public function create()
+    {
+    	$departments = Department::orderBy('department_name', 'asc')->get();
+    	return view('student.create', compact('departments'));
+    }
+    public function store(StudentCreateRequest $request)
+    {
+    	Student::create($request->all());
+    	return back()->withInfo('New Student Create Successfully');
     }
     public function edit(Student $student)
     {
