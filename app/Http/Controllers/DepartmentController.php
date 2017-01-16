@@ -36,4 +36,9 @@ class DepartmentController extends Controller
     	$department->update($request->all());
     	return back()->withInfo('Department Info Successfully Updated');
     }
+
+    public function addSubject(Department $department)
+    {
+        return view('department.add-subject', compact('department'));
+    }
 }

@@ -63,8 +63,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('department/{department}/edit', [
 		'uses' => 'DepartmentController@update',
 	]);
-
+	Route::get('add-subject/{department}/department', [
+		'uses' => 'DepartmentController@addSubject',
+		'as' => 'department.add.subject'
+	]);
+	/**
+	 * Subject 
+	 * **/
 	Route::resource('subject', 'SubjectController', ['except' => ['show']]);
+
+
 
 });
 

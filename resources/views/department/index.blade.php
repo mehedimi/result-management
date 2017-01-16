@@ -22,7 +22,7 @@
                     <td>{{$d->department_name}}</td>
                     <td>{{$d->created_at->diffForHumans()}}</td>
                     <td>{{$d->updated_at->diffForHumans()}}</td>
-                    <td><a href="{{ route('department.edit', $d->id) }}">Edit</a></td>
+                    <td><a href="{{ route('department.edit', $d->id) }}">Edit</a> | <a href="{{ route('department.add.subject', $d->id) }}">Add Subject</a></td>
                 </tr>
                 @endforeach
             </tbody>
