@@ -26,8 +26,9 @@ class StudentController extends Controller
     	return back()->withInfo('New Student Create Successfully');
     }
     public function edit(Student $student)
-    {
-    	return view('student.edit', compact('student'));
+    {   
+        $departments = Department::orderBy('department_name', 'asc')->get();
+    	return view('student.edit', compact('student', 'departments'));
     }
     public function update(Request $request, Student $student)
     {

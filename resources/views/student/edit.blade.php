@@ -93,24 +93,25 @@
                 <div class="form-group">
                     <label for="department_id" class="col-md-4 control-label">Department</label>
                     <div class="col-md-6">
-                        <select class="form-control" id="department_id">
-                            <option value="1">MaleMale</option>
-                            <option value="1">MaleMale</option>
+                        <select class="form-control" name="department_id" id="department_id">
+                            @foreach($departments as $d)
+                            <option value="{{ $d->id }}"{{ $student->department_id == $d->id ? ' selected' : '' }}>{{ $d->department_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
+                @php
+                    $semesters = [
+                        1 => 'First', 2 => 'Second', 3 => 'Third', 4 => 'Fourth', 5 => 'Fifth', 6 => 'Sixth', 7 => 'Seventh', 8 => 'Eight'
+                    ];
+                @endphp
                 <div class="form-group">
                     <label for="semester" class="col-md-4 control-label">Semester </label>
                     <div class="col-md-6">
-                        <select class="form-control" id="semester">
-                            <option value="1">First Semester</option>
-                            <option value="2">Second Semester</option>
-                            <option value="3">Third Semester</option>
-                            <option value="4">Fourth Semester</option>
-                            <option value="5">Fifth Semester</option>
-                            <option value="6">Sixth Semester</option>
-                            <option value="7">Seventh Semester</option>
-                            <option value="8">Eight Semester</option>
+                        <select class="form-control" name="semester" id="semester">
+                            @foreach($semesters as $key => $s)
+                            <option value="{{ $key }}"{{ $key == $student->semester ? ' selected' : '' }}>{{ $s }} Semester</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
