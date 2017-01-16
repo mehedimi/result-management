@@ -67,6 +67,10 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'DepartmentController@addSubject',
 		'as' => 'department.add.subject'
 	]);
+	Route::get('department/{department}/semester/{semester}', [
+		'uses' => 'DepartmentController@addSubjectWithSemester',
+		'as' => 'department.subject.add'
+	]);
 	/**
 	 * Subject 
 	 * **/

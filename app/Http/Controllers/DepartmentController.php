@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Http\Requests\DepartmentCreateRequest;
+use App\Subject;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -40,5 +41,16 @@ class DepartmentController extends Controller
     public function addSubject(Department $department)
     {
         return view('department.add-subject', compact('department'));
+    }
+    public function addSubjectWithSemester(Department $department, $semester)
+    {
+        if (!in_array($semester, range(1,8))) {
+            return abort(404);
+        }
+        $semesters = [
+            1 => 'First', 2 => 'Second', 3 => 'Third', 4 => 'Fourth', 5 => 'Fifth', 6 => 'Sixth', 7 => 'Seventh', 8 => 'Eight'
+        ];
+        $subjects = Subject::orderBy('subject_name', 'asc')->get();
+        return view('department.adding-subject', compact('department', 'semesters', 'semester', 'subjects'));
     }
 }
