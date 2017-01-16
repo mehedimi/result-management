@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubjectCreateRequest;
+use App\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -13,7 +15,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = Subject::orderBy('subject_name', 'asc')->paginate(15);
+        return view('subject.index', compact('subjects'));
     }
 
     /**
@@ -23,7 +26,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('subject.create');
     }
 
     /**
@@ -32,21 +35,12 @@ class SubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubjectCreateRequest $request)
     {
-        //
+        Subject::create($request->all());
+        return back()->withInfo("New Subject Created Successfully");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -54,9 +48,9 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
-        //
+        return view('subject.edit', compact('subject'));
     }
 
     /**
@@ -66,9 +60,15 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Subject $subject)
     {
-        //
+        $this->validate($request, [
+            'subject_name' => 'required|unique:subjects,subject_name,' . $subject->id,
+            'subject_code' => 'required|integer|unique:subjects,subject_code,' . $subject->id,
+            'subject_credit' => 'required|integer',
+        ]);
+        $subject->update($request->all());
+        return back()->withInfo('Subject Information Updated');
     }
 
     /**

@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'DepartmentController@update',
 	]);
 
-	Route::get('subject', 'SubjectController@index');
+	Route::resource('subject', 'SubjectController', ['except' => ['show']]);
 
 });
 

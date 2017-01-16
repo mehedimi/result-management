@@ -36,5 +36,17 @@
     </footer>
     <script src="{{ url('/js/jquery.min.js') }}"></script>
     <script src="{{ url('/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            var currentLocation = location.href.split('?');
+            jQuery('.nav a').each(function(i, v){
+                if ($(v).attr("href") == currentLocation[0]) {
+                    $(v).parents('li').addClass('active');
+                    return false;
+                }
+
+            });
+        });
+    </script>
 </body>
 </html>
