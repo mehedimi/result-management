@@ -53,4 +53,9 @@ class DepartmentController extends Controller
         $subjects = Subject::orderBy('subject_name', 'asc')->get();
         return view('department.adding-subject', compact('department', 'semesters', 'semester', 'subjects'));
     }
+
+    public function assignSubject(Department $department, Request $request, $semester)
+    {
+        
+    }
 }

@@ -71,11 +71,24 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'DepartmentController@addSubjectWithSemester',
 		'as' => 'department.subject.add'
 	]);
+	Route::post('assign-subject/department/{department}/semester/{semester}', [
+		'uses' => 'DepartmentController@assignSubject',
+		'as' => 'assign.subject'
+	]);
 	/**
 	 * Subject 
 	 * **/
 	Route::resource('subject', 'SubjectController', ['except' => ['show']]);
 
+	// Group Route Section
+	Route::get('group/{department}/create', [
+		'uses' => 'GroupController@index',
+		'as' => 'group.index'
+	]); 
+	Route::post('group/{department}/create', [
+		'uses' => 'GroupController@store',
+	]); 
+	//  End Group Route Section 
 
 
 });

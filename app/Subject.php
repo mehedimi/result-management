@@ -9,4 +9,9 @@ class Subject extends Model
     protected $fillable = [
     	'subject_name', 'subject_code', 'subject_credit'
     ];
+
+    public function departments()
+    {
+    	return $this->belongToMany(Subject::class);
+    }
 }
