@@ -34,6 +34,10 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'StudentController@create',
 		'as' => 'student.create'
 	]);
+	Route::get('student/search', [
+		'uses' => 'StudentController@search',
+		'as' => 'student.search'
+	]);
 	Route::post('student/create', [
 		'uses' => 'StudentController@store',
 	]);

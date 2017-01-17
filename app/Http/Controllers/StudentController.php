@@ -41,4 +41,11 @@ class StudentController extends Controller
         $student->update($request->all());
         return back()->withInfo('Student Information Successfully Updated');
     }
+
+    public function search(Request $request)
+    {
+        $students = Student::where('name', 'like', '%' .$request->get('search'). '%')->orderBy('name', 'asc')->paginate(10);
+        $students->appends(['search' => $request->search]);
+        return view('student.index', compact('students'));
+    }
 }
