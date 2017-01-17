@@ -9,10 +9,10 @@
     <div class="panel-heading">Please Select Semester</div>
         <div class="panel-body">
          @php
-                    $semesters = [
-                        1 => 'First', 2 => 'Second', 3 => 'Third', 4 => 'Fourth', 5 => 'Fifth', 6 => 'Sixth', 7 => 'Seventh', 8 => 'Eight'
-                    ];
-                @endphp
+            $semesters = [
+                1 => 'First', 2 => 'Second', 3 => 'Third', 4 => 'Fourth', 5 => 'Fifth', 6 => 'Sixth', 7 => 'Seventh', 8 => 'Eight'
+            ];
+        @endphp
             <ul class="list-group">
               @foreach($semesters as $key => $value)
               <li class="list-group-item"><a href="{{ route('department.subject.add', [$department->id, $key]) }}">{{$value}} Semester</a></li>

@@ -56,11 +56,8 @@ class DepartmentController extends Controller
 
     public function assignSubject(Department $department, Request $request, $semester)
     {
-        $subjects = $request->subject_id;
-       
-        array_push($subjects, ['semester' => $semester]);
-    
-        $department->subjects()->syncWithoutDetaching($subjects);
+        $department->subjects()->attach($request->subject_id, ['semester' => $semester]);
         return back();
     }
+   
 }
