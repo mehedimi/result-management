@@ -18,6 +18,6 @@ class Department extends Model
 
     public function subjects()
     {
-    	return $this->belongToMany(Subject::class);
+    	return $this->belongsToMany(Subject::class);
     }
 }
