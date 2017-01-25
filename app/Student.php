@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Department;
+use App\Student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -14,4 +16,8 @@ class Student extends Model
     	'home_number', 'gender', 'roll_number', 'reg_number', 'department_id',
     	'shift', 'semester', 'present_address', 'permanent_address'
     ];
+    public function department()
+    {
+    	return $this->belongsTo(Department::class);
+    }
 }

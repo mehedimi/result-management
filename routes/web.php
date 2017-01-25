@@ -8,6 +8,10 @@ Route::get('/', [
 	'uses' => 'ResultShowController@index',
 	'as' => 'home.index'
 ]);
+Route::get('/result/find', [
+	'uses' => 'ResultShowController@showResult',
+	'as' => 'home.result'
+]);
 Route::post('/result/search', [
 	'uses' => 'ResultShowController@search',
 	'as' => 'result.search'
@@ -79,6 +83,10 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'DepartmentController@assignSubject',
 		'as' => 'assign.subject'
 	]);
+	Route::delete('remove/subject/{subject}/department/{department}', [
+		'uses' => "DepartmentController@removeSubject",
+		'as' => 'subject.remove'
+	]);
 	/**
 	 * Subject 
 	 * **/
@@ -93,7 +101,32 @@ Route::group(['middleware' => 'auth'], function(){
 		'uses' => 'GroupController@store',
 	]); 
 	//  End Group Route Section 
-
+	/**
+	 * Result Route
+	 */
+	Route::get('result', [
+		'uses' => 'ResultAdminController@index',
+		'as' => 'result.index'
+	]);
+	Route::get('result/department/{department}', [
+		'uses' => 'ResultAdminController@selectSemester',
+		'as' => 'result.select.dep'
+	]);
+	Route::get('result/department/{department}/semester/{semester}', [
+		'uses' => 'ResultAdminController@selectStudent',
+		'as' => 'result.select.stu'
+	]);
+	Route::get('result/student/{student}/semester/{semester}', [
+		'uses' => 'ResultAdminController@addResult',
+		'as' => 'result.add'
+	]);
+	Route::post('result/student/{student}/semester/{semester}', [
+		'uses' => 'ResultAdminController@storeResult',
+	]);
+	Route::get('result/student/{student}/semester/{semester}/view', [
+		'uses' => 'ResultAdminController@showResult',
+		'as' => 'result.show'
+	]);
 
 });
 

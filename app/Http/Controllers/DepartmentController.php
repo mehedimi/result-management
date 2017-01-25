@@ -44,12 +44,12 @@ class DepartmentController extends Controller
     }
     public function addSubjectWithSemester(Department $department, $semester)
     {
-        if (!in_array($semester, range(1,8))) {
-            return abort(404);
-        }
         $semesters = [
             1 => 'First', 2 => 'Second', 3 => 'Third', 4 => 'Fourth', 5 => 'Fifth', 6 => 'Sixth', 7 => 'Seventh', 8 => 'Eight'
         ];
+        if (!in_array($semester, array_keys($semesters))) {
+            return abort(404);
+        }
         $subjects = Subject::orderBy('subject_name', 'asc')->get();
         return view('department.adding-subject', compact('department', 'semesters', 'semester', 'subjects'));
     }
@@ -57,6 +57,12 @@ class DepartmentController extends Controller
     public function assignSubject(Department $department, Request $request, $semester)
     {
         $department->subjects()->attach($request->subject_id, ['semester' => $semester]);
+        return back();
+    }
+
+    public function removeSubject(Subject $subject, Department $department)
+    {
+        $department->subjects()->detach($subject);
         return back();
     }
    

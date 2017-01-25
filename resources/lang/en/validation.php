@@ -96,8 +96,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'points.*' => [
+            'required' => 'This Point Field Are Required',
+            'integer' => 'This Point Must be Numeric Value',
         ],
     ],
 

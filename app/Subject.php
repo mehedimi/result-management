@@ -14,4 +14,8 @@ class Subject extends Model
     {
     	return $this->belongToMany(Subject::class);
     }
+    public function results()
+    {
+    	return $this->hasMany(Result::class)->where('semester', request()->semester);
+    }
 }

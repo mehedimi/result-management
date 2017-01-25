@@ -7,14 +7,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Find your Result</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" role="form" method="get" action="{{ route('home.result') }}">
 
                         <div class="form-group{{ $errors->has('roll') ? ' has-error' : '' }}">
                             <label for="roll" class="col-md-4 control-label">Roll </label>
 
                             <div class="col-md-6">
-                                <input id="roll" type="roll" placeholder="Enter your board roll" class="form-control" name="roll" value="{{ old('roll') }}" required autofocus>
+                                <input id="roll" type="text" placeholder="Enter your board roll" class="form-control" name="roll" value="{{ old('roll') }}" required autofocus>
 
                                 @if ($errors->has('roll'))
                                     <span class="help-block">
@@ -29,14 +28,11 @@
 
                             <div class="col-md-6">
                                 <select name="semester" id="semester" class="form-control">
-                                    <option value="">Select a semester</option>
+                                    @foreach($semesters as $key => $semester)
+                                    <option value="{{ $key }}">{{ $semester }} Semester</option>
+                                    @endforeach
                                 </select>
-
-                                @if ($errors->has('semester'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('semester') }}</strong>
-                                    </span>
-                                @endif
+                        
                             </div>
                         </div>
                     

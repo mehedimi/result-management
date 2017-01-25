@@ -36,6 +36,7 @@
     </footer>
     <script src="{{ url('/js/jquery.min.js') }}"></script>
     <script src="{{ url('/js/bootstrap.min.js') }}"></script>
+    @yield('script')
     <script type="text/javascript">
         jQuery(document).ready(function(){
             var currentLocation = location.href.split('?');
