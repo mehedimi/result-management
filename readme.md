@@ -2,8 +2,9 @@
 
 This is a simple and elegant result management system for Ploytechnic Institute. I am using Laravel Framework (PHP) for this project.Create and manage students, subjects, departments and result more easily and efficiency way.
 
-## Feature:
+## Features:
 
++ Authentication System
 + Information about Students.
 + Information about Departments.
 + Information about Subjects.
